@@ -13,10 +13,24 @@ var counter = {
   "q" : 0,  "r" : 0,  "s" : 0,  "t" : 0,
   "u" : 0,  "v" : 0,  "w" : 0,  "x" : 0,
   "y" : 0,  "z" : 0
-}
+};
 
 function countLetters(counter, sample_text){
-  // FIX ME
+  //base case
+  if(sample_text.length === 0) {
+    return counter;
+  }
+
+  //make sample_text lowercase
+  var lowercaseStr = sample_text.toLowerCase();
+
+  //counter doesn't have a property of the first character of the string, go next
+  if(counter.hasOwnProperty(lowercaseStr.substring(0,1)) === false) {
+      return countLetters(counter, sample_text.substring(1, sample_text.substring().length));
+  } else {
+  counter[lowercaseStr.substring(0,1)]++;
+  return countLetters(counter, sample_text.substring(1, sample_text.substring().length));
+}
 }
 
 $(document).ready(function(){
